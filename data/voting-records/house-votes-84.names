@@ -1,0 +1,11 @@
+1. Title: 1984 United States Congressional Voting Records Database
+CREATE VIEW format_count AS
+SELECT mediatype.name, COUNT(track.trackid) AS "ilość_utworów_format"
+FROM 
+    track 
+        JOIN mediatype ON track.mediatypeid = mediatype.mediatypeid 
+        JOIN invoiceline ON track.trackid = invoiceline.trackid
+GROUP BY mediatype.mediatypeid
+ORDER BY "ilość_utworów_format" DESC
+
+SELECT * FROM FORMAT_COUNT
